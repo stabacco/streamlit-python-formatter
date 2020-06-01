@@ -159,6 +159,17 @@ def _reformat(code: str, formatters: List[str]):
     return code
 
 
+formatters = streamlit.sidebar.multiselect(
+    "Choose your formatters (the order matters)",
+    list(formatter_map.keys()),
+    default=["black"],
+    key="python-formatters",
+)
+
+streamlit.sidebar.markdown("---")
+
+streamlit.sidebar.subheader("Parameters")
+
 line_length = streamlit.sidebar.slider(
     "Line Length", value=88, min_value=60, max_value=180
 )
@@ -168,11 +179,5 @@ title = streamlit.title("Python Code Formatter")
 text = streamlit.text_area("Type your code here", height=300)
 
 
-formatters = streamlit.multiselect(
-    "Choose your formatters (the order matters)",
-    list(formatter_map.keys()),
-    default=["black"],
-    key="python-formatters",
-)
 with streamlit.spinner("Formatting code ..."):
     streamlit.code(_reformat(text, formatters))
