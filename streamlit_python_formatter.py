@@ -34,7 +34,7 @@ def _autopep8_params(parent=streamlit.sidebar):
     parent.subheader("[Autopep8](https://github.com/hhatto/autopep8) Parameters")
 
     widgets = {}
-    widgets["aggressive"] = parent.checkbox("Aggressive", value=False)
+    widgets["aggressive"] = parent.checkbox("Aggressive", value=False, key="pep8_aggressive")
     widgets["max_line_length"] = line_length
     return widgets
 
