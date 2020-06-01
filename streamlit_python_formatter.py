@@ -4,24 +4,21 @@ import click
 import streamlit
 
 
-
 def _autoflake_params(parent=streamlit.sidebar):
     parent.subheader("[Autoflake](https://github.com/myint/autoflake) Parameters")
-    widgets = {}
-    widgets["expand_star_imports"] = parent.checkbox("Expand Star Imports", value=False)
-    widgets["remove_all_unused_imports"] = parent.checkbox(
-        "Remove Unused Imports", value=False
-    )
-    widgets["remove_duplicate_keys"] = parent.checkbox(
-        "Remove Duplicate Keys", value=False
-    )
-    widgets["remove_unused_variables"] = parent.checkbox(
-        "Remove Unused Variables", value=False
-    )
-    widgets["ignore_init_module_imports"] = parent.checkbox(
-        "Ignore Init Module Imports", value=False
-    )
-    return widgets
+    return {
+        "expand_star_imports": parent.checkbox("Expand Star Imports", value=False),
+        "remove_all_unused_imports": parent.checkbox(
+            "Remove Unused Imports", value=False
+        ),
+        "remove_duplicate_keys": parent.checkbox("Remove Duplicate Keys", value=False),
+        "remove_unused_variables": parent.checkbox(
+            "Remove Unused Variables", value=False
+        ),
+        "ignore_init_module_imports": parent.checkbox(
+            "Ignore Init Module Imports", value=False
+        ),
+    }
 
 
 def _autoflake(code: str, **params) -> str:
@@ -33,10 +30,10 @@ def _autoflake(code: str, **params) -> str:
 def _autopep8_params(parent=streamlit.sidebar):
     parent.subheader("[Autopep8](https://github.com/hhatto/autopep8) Parameters")
 
-    widgets = {}
-    widgets["aggressive"] = parent.checkbox("Aggressive", value=False, key="pep8_aggressive")
-    widgets["max_line_length"] = line_length
-    return widgets
+    return {
+        "aggressive": parent.checkbox("Aggressive", value=False),
+        "max_line_length": line_length,
+    }
 
 
 def _autopep8(code: str, **params):
@@ -47,25 +44,22 @@ def _autopep8(code: str, **params):
 
 def _docformatter_params(parent=streamlit.sidebar):
     parent.subheader("[Docformatter](https://github.com/myint/docformatter) Parameters")
-    out_widgets = {}
-
-    out_widgets["summary_wrap_length"] = parent.slider(
-        "Summary Wrap Length", value=79, min_value=60, max_value=200
-    )
-    out_widgets["description_wrap_length"] = (
-        parent.slider("Description Wrap Length", value=72, min_value=60, max_value=200),
-    )
-    out_widgets["pre_summary_newline"] = parent.checkbox(
-        "Pre Summary Newline", value=False
-    )
-    out_widgets["make_summary_multi_line"] = parent.checkbox(
-        "Make Summary Multi Line", value=False
-    )
-    out_widgets["post_description_blank"] = parent.checkbox(
-        "Post Description Blank", value=False
-    )
-    out_widgets["force_wrap"] = parent.checkbox("Force Wrap", value=False)
-    return out_widgets
+    return {
+        "summary_wrap_length": parent.slider(
+            "Summary Wrap Length", value=79, min_value=60, max_value=200
+        ),
+        "description_wrap_length": parent.slider(
+            "Description Wrap Length", value=72, min_value=60, max_value=200
+        ),
+        "pre_summary_newline": parent.checkbox("Pre Summary Newline", value=False),
+        "make_summary_multi_line": parent.checkbox(
+            "Make Summary Multi Line", value=False
+        ),
+        "post_description_blank": parent.checkbox(
+            "Post Description Blank", value=False
+        ),
+        "force_wrap": parent.checkbox("Force Wrap", value=False),
+    }
 
 
 def _docformatter(code: str, **params) -> str:
@@ -76,16 +70,17 @@ def _docformatter(code: str, **params) -> str:
 
 def _pyformat_params(parent=streamlit.sidebar):
     parent.subheader("[Pyformat](https://github.com/myint/pyformat) Parameters")
-    out_widgets = {}
-
-    out_widgets["aggressive"] = parent.checkbox("Aggressive", value=False)
-    out_widgets["remove_all_unused_imports"] = parent.checkbox(
-        "Remove unused imports", value=False
-    )
-    out_widgets["remove_unused_variables"] = parent.checkbox(
-        "Remove unused variables", value=False
-    )
-    return out_widgets
+    return {
+        "aggressive": parent.checkbox(
+            "Aggressive", value=False, key="pyformat_aggressive"
+        ),
+        "remove_all_unused_imports": parent.checkbox(
+            "Remove unused imports", value=False
+        ),
+        "remove_unused_variables": parent.checkbox(
+            "Remove unused variables", value=False
+        ),
+    }
 
 
 def _pyformat(code: str, **params):
@@ -100,17 +95,13 @@ def _pyformat(code: str, **params):
     )
 
 
-
-
 def _yapf_params(parent=streamlit.sidebar):
     parent.subheader("[YAPF](https://github.com/google/yapf) Parameters")
-    out_widgets = {}
-
-    out_widgets["style_config"] = parent.selectbox(
-        "Style Config", ("pep8", "google", "facebook", "yapf")
-    )
-
-    return out_widgets
+    return {
+        "style_config": parent.selectbox(
+            "Style Config", ("pep8", "google", "facebook", "yapf")
+        )
+    }
 
 
 def _yapf(code: str, **params):
@@ -122,9 +113,7 @@ def _yapf(code: str, **params):
 def _isort_params(parent=streamlit.sidebar):
 
     parent.subheader("[Isort](https://github.com/timothycrosley/isort) Parameters")
-    out_widgets = {}
-
-    return out_widgets
+    return {}
 
 
 def _isort(code: str, **params):
@@ -135,15 +124,10 @@ def _isort(code: str, **params):
 
 def _black_params(parent=streamlit.sidebar):
     parent.subheader("[Black](https://github.com/psf/black) Parameters")
-    out_widgets = {}
-
-    out_widgets["line_length"] = line_length
-
-    out_widgets["string_normalization"] = parent.checkbox(
-        "string_normalization", value=True
-    )
-
-    return out_widgets
+    return {
+        "line_length": line_length,
+        "string_normalization": parent.checkbox("string_normalization", value=True),
+    }
 
 
 def _black(code: str, **params):
