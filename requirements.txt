@@ -56,6 +56,7 @@ ptyprocess==0.6.0
 pycodestyle==2.6.0
 pydeck==0.3.1
 pyflakes==2.2.0
+pyformat==0.7
 Pygments==2.6.1
 pyparsing==2.4.7
 pyrsistent==0.16.0
@@ -76,6 +77,7 @@ tornado==5.1.1
 traitlets==4.3.3
 typed-ast==1.4.1
 tzlocal==2.1
+unify==0.5
 untokenize==0.1.1
 urllib3==1.25.9
 validators==0.15.0
