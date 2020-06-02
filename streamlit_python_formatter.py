@@ -176,7 +176,16 @@ line_length = streamlit.sidebar.slider(
 
 title = streamlit.title("Python Code Formatter")
 
-text = streamlit.text_area("Type your code here", height=300)
+default_text = '''
+def format_your_code_here()  ->  None:
+    """
+    Choose your formatters from the (<=) sidebar on the left
+    and set their parameters to see your code being formatted live.
+    """
+
+   
+'''
+text = streamlit.text_area("Type your code here", value=default_text, height=300)
 
 
 with streamlit.spinner("Formatting code ..."):
