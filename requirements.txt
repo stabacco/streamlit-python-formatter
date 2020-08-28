@@ -81,7 +81,7 @@ unify==0.5
 untokenize==0.1.1
 urllib3==1.25.9
 validators==0.15.0
-watchdog==0.10.2
+watchdog==0.10.3
 wcwidth==0.1.9
 webencodings==0.5.1
 widgetsnbextension==3.5.1
