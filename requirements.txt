@@ -57,7 +57,7 @@ pycodestyle==2.6.0
 pydeck==0.3.1
 pyflakes==2.2.0
 pyformat==0.7
-Pygments==2.6.1
+Pygments==2.7.4
 pyparsing==2.4.7
 pyrsistent==0.16.0
 python-dateutil==2.8.1
